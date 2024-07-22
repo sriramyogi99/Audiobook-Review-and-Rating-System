@@ -1,0 +1,113 @@
+
+/* src/pages/HomePage.css */
+
+.home-container{
+  padding: 30px;
+}
+
+.audiobooks-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: grey; /* Light background for the container */
+}
+
+.audiobook {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  width: 30%;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.2s;
+  background-color: whitesmoke;
+}
+
+.audiobook img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.audiobook:hover {
+  transform: scale(1.05);
+}
+
+.audiobook h2 {
+  margin: 0;
+}
+
+.audiobook p {
+  margin: 5px 0;
+}
+
+.new-book-button {
+  display: block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.new-book-button:hover {
+  background-color: green;
+}
+
+/* filters */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between filter items */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 20px 0; /* Margin for spacing above and below the filter container */
+}
+
+.filter-container label {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  color: #333;
+}
+
+.filter-container select, 
+.filter-container input {
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.filter-container select {
+  background-color: #f9f9f9;
+}
+
+.filter-container input {
+  background-color: #fff;
+}
+
+.filter-container input::placeholder {
+  color: #888;
+}
+
+.filter-container select:focus, 
+.filter-container input:focus {
+  border-color: #007bff; /* Highlight color on focus */
+  outline: none; /* Remove default outline */
+}
+
+@media (max-width: 600px) {
+  .filter-container {
+    flex-direction: column;
+  }
+}

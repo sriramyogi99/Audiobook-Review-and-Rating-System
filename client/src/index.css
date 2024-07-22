@@ -1,0 +1,22 @@
+/* src/index.css */
+label {
+  margin-right: 10px;
+}
+
+select {
+  margin-left: 5px;
+  padding: 5px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
