@@ -13,12 +13,13 @@ const AudiobookPage = () => {
   const [review, setReview] = useState('');
   const [rating, setRating] = useState(null);
   const [reviews, setReviews] = useState([]);
+  const server_url = "https://audiobook-review-and-rating-system-psrx.onrender.com";
 
   useEffect(() => {
     const fetchBookAndReviews = async () => {
       try {
         // Fetch the audiobook details
-        const bookResponse = await axios.get(`http://localhost:5000/audiobooks/${id}`);
+        const bookResponse = await axios.get(`${server_url}/audiobooks/${id}`);
         const bookData = bookResponse.data;
         setBook(bookData);
         // console.log('Book Details: ', bookData);
@@ -26,7 +27,7 @@ const AudiobookPage = () => {
         if (bookData.reviews && bookData.reviews.length > 0) {
           const reviewIds = bookData.reviews.map(review => review._id); // Get review IDs
           // console.log('Reviews Ids: ', reviewIds);
-          const reviewsResponse = await axios.get(`http://localhost:5000/audiobooks/${id}/reviews`, {
+          const reviewsResponse = await axios.get(`${server_url}/audiobooks/${id}/reviews`, {
             params: {
               ids: reviewIds.join(',') // Send as a comma-separated string
             }
@@ -53,7 +54,7 @@ const AudiobookPage = () => {
     try {
       // console.log('Book ID:', id);
       // Delete the book from the backend
-      await axios.delete(`http://localhost:5000/audiobooks/${id}`);
+      await axios.delete(`${server_url}/audiobooks/${id}`);
       // Redirect to the homepage
       navigate('/');
     } catch (error) {
@@ -75,7 +76,7 @@ const AudiobookPage = () => {
     // console.log('Book Id:', id);
     if (review.trim()) {
       try {
-        const response = await axios.post(`http://localhost:5000/audiobooks/${id}/reviews`, {
+        const response = await axios.post(`${server_url}/audiobooks/${id}/reviews`, {
           description: review, // Use `description` to match the schema
           rating,
         });
@@ -92,7 +93,7 @@ const AudiobookPage = () => {
     // console.log('Book ID:', id);
     // console.log('Review ID:', reviewId);
     try {
-      await axios.delete(`http://localhost:5000/audiobooks/${id}/reviews/${reviewId}`);
+      await axios.delete(`${server_url}/audiobooks/${id}/reviews/${reviewId}`);
       setReviews(reviews.filter(r => r._id !== reviewId));
     } catch (error) {
       console.error('Error deleting review:', error.response ? error.response.data : error.message);
