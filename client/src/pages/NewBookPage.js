@@ -11,6 +11,7 @@ const NewBookPage = ({ addBook }) => {
   const [coverImage, setCoverImage] = useState('');
   const [description, setDescription] = useState('');
   const [genre, setGenre] = useState('');
+  const server_url = "https://audiobook-review-and-rating-system-psrx.onrender.com";
 
   const navigate = useNavigate();
 
@@ -21,7 +22,7 @@ const NewBookPage = ({ addBook }) => {
     const defaultCoverImage = 'https://example.com/default-cover.jpg';
 
     try {
-      await axios.post('http://localhost:5000/audiobooks', {
+      await axios.post(`${server_url}/audiobooks`, {
         title,
         author,
         coverImage: coverImage || defaultCoverImage,
