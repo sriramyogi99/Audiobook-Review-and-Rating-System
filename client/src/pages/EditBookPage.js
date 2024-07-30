@@ -8,6 +8,7 @@ import axios from 'axios';
 const EditBookPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const server_url = "https://audiobook-review-and-rating-system-psrx.onrender.com";
 
   // const book = [...newBooks, ...defaultBooks ].find((book) => book.id === Number(id));
   // const [book, setBook] = useState(null);
@@ -19,7 +20,7 @@ const EditBookPage = () => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/audiobooks/${id}`);
+        const response = await axios.get(`${server_url}/audiobooks/${id}`);
         const fetchedBook = response.data;
         setTitle(fetchedBook.title);
         setAuthor(fetchedBook.author);
@@ -43,7 +44,7 @@ const EditBookPage = () => {
       genre,
     };
     try {
-      await axios.put(`http://localhost:5000/audiobooks/${id}`, updatedBook);
+      await axios.put(`${server_url}/audiobooks/${id}`, updatedBook);
       navigate(`/audiobook/${id}`);
     } catch (error) {
       console.error('Error updating book:', error);
