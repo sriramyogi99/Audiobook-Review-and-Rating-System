@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Audiobook = require('./models/Audiobook');
 const Review = require('./models/Review');
+require('dotenv').config();
 
 const migrateReviews = async () => {
   try {
