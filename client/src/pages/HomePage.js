@@ -8,6 +8,7 @@ const HomePage = () => {
   const [books, setBooks] = useState([]); // containes books from back-end
   const [genre, setGenre] = useState('');
   const [author, setAuthor] = useState('');
+  const server_url = "https://audiobook-review-and-rating-system-psrx.onrender.com";
 
   const navigate = useNavigate();
 
@@ -15,7 +16,7 @@ const HomePage = () => {
     // Fetch all books from the backend
     const fetchBooks = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/audiobooks');
+        const response = await axios.get(`${server_url}/audiobooks`);
         setBooks(response.data);
 
         // Log IDs of all audiobooks
